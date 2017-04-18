@@ -97,7 +97,8 @@ void UserTracker::clear()
 
 void UserTracker::onNewFrame(nite::UserTracker &tracker)
 {
-	nite::Status rc = tracker.readFrame(&userTrackerFrame);
+	
+    nite::Status rc = tracker.readFrame(&userTrackerFrame);
 	
 	if (rc != nite::STATUS_OK)
 	{
@@ -131,9 +132,9 @@ void UserTracker::onNewFrame(nite::UserTracker &tracker)
 
 ofPixels UserTracker::getPixelsRef(int _near, int _far, bool invert)
 {
-	ofPixels pix;
-	ofxNI2::depthRemapToRange(getPixelsRef(), pix, _near, _far, invert);
-	return pix;
+	ofPixels tPix;
+	ofxNI2::depthRemapToRange(getPixelsRef(), tPix, _near, _far, invert);
+	return tPix;
 }
 
 void UserTracker::onUpdate(ofEventArgs&)

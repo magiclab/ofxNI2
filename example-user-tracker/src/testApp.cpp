@@ -34,8 +34,10 @@ void testApp::update()
 void testApp::draw()
 {
 	// draw depth
-	depth_image.setFromPixels(tracker.getPixelsRef(1000, 4000));
-	
+    ofPixels pix = tracker.getPixelsRef(1000, 4000);
+	//cout<<"CIPPA "<<pix.getImageType()<<", "<<pix.getWidth()<<"x"<<pix.getHeight()<<endl;
+    depth_image.setFromPixels(pix);
+	//cout<<"CIPPA "<<depth_image.getWidth()<<"x"<<depth_image.getHeight()<<endl;
 	ofSetColor(255);
 	depth_image.draw(0, 0);
 	
@@ -50,12 +52,12 @@ void testApp::draw()
 	// draw in 3D
 	cam.begin();
 	ofDrawAxis(100);
-	tracker.draw();
+	//tracker.draw();
 	
 	// draw box
 	ofNoFill();
 	ofSetColor(255, 0, 0);
-	for (int i = 0; i < tracker.getNumUser(); i++)
+	/*for (int i = 0; i < tracker.getNumUser(); i++)
 	{
 		ofxNiTE2::User::Ref user = tracker.getUser(i);
 		const ofxNiTE2::Joint &joint = user->getJoint(nite::JOINT_HEAD);
@@ -63,7 +65,7 @@ void testApp::draw()
 		joint.transformGL();
 		ofBox(300);
 		joint.restoreTransformGL();
-	}
+	}*/
 	
 	cam.end();
 }
