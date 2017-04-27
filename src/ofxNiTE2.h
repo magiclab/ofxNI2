@@ -134,8 +134,12 @@ protected:
 	ofMutex *mutex;
 	ofCamera overlay_camera;
 	
+#ifdef TARGET_WIN32
+	void processFrame();
+#endif
 	void onNewFrame(nite::UserTracker &tracker);
 	void onUpdate(ofEventArgs&);
+
 };
 
 #endif

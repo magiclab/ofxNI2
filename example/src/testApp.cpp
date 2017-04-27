@@ -31,12 +31,12 @@ void testApp::setup()
 		ir.start();
 	}
 	
-//	if (color.setup(*device)) // only for kinect device
-//	{
-//		color.setSize(320, 240);
-//		color.setFps(60);
-//		color.start();
-//	}
+	//if (color.setup(*device)) // only for kinect 
+	//{
+	//	color.setSize(320, 240);
+	//	color.setFps(30);
+	//	color.start();
+	//}
 }
 
 void testApp::exit()
@@ -54,7 +54,7 @@ void testApp::update()
 void testApp::draw()
 {
 	ir.draw();
-//	color.draw();
+	//color.draw(0,240);
 	depth.draw(320, 0);
 }
 

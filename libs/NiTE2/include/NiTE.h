@@ -397,9 +397,11 @@ public:
 	class NewFrameListener
 	{
 	public:
+		
 		NewFrameListener() : m_pUserTracker(NULL)
 		{
 			m_userTrackerCallbacks.readyForNextFrame = newFrameCallback;
+			
 		}
 
 		virtual void onNewFrame(UserTracker&) = 0;
@@ -426,7 +428,9 @@ public:
 	};
 
 	UserTracker() : m_userTrackerHandle(NULL)
-	{}
+	{
+		
+	}
 
 
 	~UserTracker()
@@ -515,7 +519,7 @@ public:
 	void addNewFrameListener(NewFrameListener* pListener)
 	{
 		niteRegisterUserTrackerCallbacks(m_userTrackerHandle, &pListener->getCallbacks(), pListener);
-		pListener->setUserTracker(this);
+		pListener->setUserTracker((nite::UserTracker*)this);
 	}
 	void removeNewFrameListener(NewFrameListener* pListener)
 	{

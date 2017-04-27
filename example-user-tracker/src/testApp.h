@@ -26,4 +26,5 @@ public:
 	
 	ofxNI2::Device device;
 	ofxNiTE2::UserTracker tracker;
+	ofxNI2::IrStream ir;
 };

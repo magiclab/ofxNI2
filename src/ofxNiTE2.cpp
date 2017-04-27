@@ -30,6 +30,7 @@ using namespace ofxNiTE2;
 
 bool UserTracker::setup(ofxNI2::Device &device)
 {
+	
 	ofxNiTE2::init();
 	
 	this->device = &device;
@@ -52,7 +53,10 @@ bool UserTracker::setup(ofxNI2::Device &device)
 	check_error(user_tracker.create(&dev));
 	if (!user_tracker.isValid()) return false;
 	
-	user_tracker.addNewFrameListener(this);
+
+#ifndef TARGET_WIN32
+	user_tracker.addNewFrameListener((nite::UserTracker::NewFrameListener *)this);
+#endif
 	user_tracker.setSkeletonSmoothingFactor(0.9);
 	
 	ofAddListener(device.updateDevice, this, &UserTracker::onUpdate);
@@ -130,6 +134,42 @@ void UserTracker::onNewFrame(nite::UserTracker &tracker)
 	}
 }
 
+#ifdef TARGET_WIN32
+void UserTracker::processFrame() {
+	nite::Status rc;
+	rc = user_tracker.readFrame(&userTrackerFrame);
+	
+	if (rc != nite::STATUS_OK)
+	{
+		check_error(rc);
+		return;
+	}
+
+	user_map = userTrackerFrame.getUserMap();
+
+	mutex->lock();
+	{
+		const nite::Array<nite::UserData>& users = userTrackerFrame.getUsers();
+		for (int i = 0; i < users.getSize(); i++)
+			users_data.push_back(users[i]);
+	}
+	mutex->unlock();
+
+	{
+		openni::VideoFrameRef frame = userTrackerFrame.getDepthFrame();
+
+		const unsigned short *pixels = (const unsigned short*)frame.getData();
+		int w = frame.getVideoMode().getResolutionX();
+		int h = frame.getVideoMode().getResolutionY();
+		int num_pixels = w * h;
+
+		pix.allocate(w, h, 1);
+		pix.getBackBuffer().setFromPixels(pixels, w, h, OF_IMAGE_GRAYSCALE);
+		pix.swap();
+	}
+}
+#endif
+
 ofPixels UserTracker::getPixelsRef(int _near, int _far, bool invert)
 {
 	ofPixels tPix;
@@ -139,8 +179,13 @@ ofPixels UserTracker::getPixelsRef(int _near, int _far, bool invert)
 
 void UserTracker::onUpdate(ofEventArgs&)
 {
-	mutex->lock();
 	
+#ifdef TARGET_WIN32
+	processFrame();
+#endif
+
+	mutex->lock();
+
 	if (!users_data.empty())
 	{
 		users_arr.clear();
@@ -191,6 +236,7 @@ void UserTracker::onUpdate(ofEventArgs&)
 	}
 	
 	mutex->unlock();
+	//cout << "UPDATE" << endl;
 }
 
 void UserTracker::draw()

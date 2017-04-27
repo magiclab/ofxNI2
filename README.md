@@ -18,8 +18,10 @@ in `ofxNI2.h` to use NiTE2.
 Visual Studio
 --------
 
-Download OpenNI2 from http://structure.io/openni and install. Choose x86 (32bit) or x64 (64bit) depending on your project settings.
-
-Copy `OpenNI2\`, `OpenNI2.ini` and `OpenNI2.dll` from `C:\Program Files (x86)\OpenNI2\Redist` (x86) or `C:\Program Files\OpenNI2\Redist` (x64) to `projectFolder\bin\`.
+The project includes 64bit Windows libraries for OpenNI2 and NiTE2.
+After adding the addon to a project in the usual way:
+- copy the content of *toVSProjectFolder* into the project folder (same level as .sln file)
+- run the *copyLibs.cmd* script you just copied
+- drag NiTE2.lib and OpenNI2.lib into the Solution Explorer
 
 To use Microsoft Kinect through OpenNI2, install Microsoft SDK 1.x as well.
