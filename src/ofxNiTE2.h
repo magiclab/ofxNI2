@@ -24,6 +24,7 @@ public:
 	inline float getOrientationConfidence() const { return joint.getOrientationConfidence(); }
 	
 	void draw();
+	void drawLight();
 	
 	nite::SkeletonJoint get() { return joint; }
 	const nite::SkeletonJoint& get() const { return joint; }
@@ -61,6 +62,7 @@ public:
 	const Joint& getJoint(nite::JointType type) { return joints[(nite::JointType)type]; }
 	
 	void draw();
+	void drawLight();
 	
 	nite::UserData get() { return userdata; }
 	const nite::UserData& get() const { return userdata; }
@@ -95,14 +97,21 @@ public:
 	
 	ofShortPixels& getPixelsRef() { return pix.getFrontBuffer(); }
 	ofPixels getPixelsRef(int near, int far, bool invert = false);
+	ofPixels getUserPixels(int idx);
+	ofPixels getUserPixelsById(nite::UserId id);
 	
 	void draw();
+	void drawId(nite::UserId _uid);
 	
 	ofCamera getOverlayCamera() { return overlay_camera; }
 	
 	size_t getNumUser() const { return users_arr.size(); }
 	User::Ref getUser(size_t idx) { return users_arr.at(idx); }
+	//dangerous! always check!
 	User::Ref getUserByID(nite::UserId id) { return users[id]; }
+	//dangerous! always check!
+	User::Ref getUserFromIterator(map<nite::UserId, User::Ref>::iterator & it);
+	map<nite::UserId, User::Ref>::iterator getUserIteratorById(nite::UserId _uid);
 	
 	void setSkeletonSmoothingFactor(float factor) { user_tracker.setSkeletonSmoothingFactor(factor); }
 	float getSkeletonSmoothingFactor(float factor) { return user_tracker.getSkeletonSmoothingFactor(); }
@@ -114,7 +123,22 @@ public:
     inline float getFloorConfidence() { return userTrackerFrame.getFloorConfidence(); }
 	
 	inline nite::UserTrackerFrameRef getFrame() const { return userTrackerFrame; }
+
+	inline bool isIteratorGood(map<nite::UserId, User::Ref>::iterator & it) { return (it != users.end()); }
+
 	
+	nite::Point3f getWorldPosForJoint(User * u, nite::JointType jt);
+	nite::Point3f getWorldPosForJoint(User::Ref ur, nite::JointType jt);
+	ofVec2f getScreenPosForPoint(ofVec3f v, ofRectangle rVp);
+	ofVec2f getScreenPosForJoint(ofxNiTE2::Joint jj, ofRectangle rVp);
+	ofVec2f getScreenPosForJoint(User::Ref ur, nite::JointType jt, ofRectangle rVp);
+	
+	inline float getWidth() { return user_map.getWidth(); }
+	inline float getHeight() { return user_map.getHeight(); }
+
+	ofPixels pixUser;
+	int totPix;
+
 protected:
 	
 	ofxNI2::DoubleBuffer<ofShortPixels> pix;
@@ -123,6 +147,7 @@ protected:
 	
 	nite::UserTracker user_tracker;
 	nite::UserMap user_map;
+	nite::UserMap uMap;
 	
 	nite::UserTrackerFrameRef userTrackerFrame;
 	

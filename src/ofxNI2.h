@@ -194,6 +194,7 @@ public:
 	
 	ofShortPixels& getPixelsRef() { return pix.getFrontBuffer(); }
 	ofPixels getPixelsRef(int near, int far, bool invert = false);
+	ofPixels getThresoldedPixels(int _near, int _far);
 	
 	ofVec3f getWorldCoordinateAt(int x, int y);
 	

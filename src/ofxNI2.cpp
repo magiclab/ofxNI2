@@ -490,6 +490,12 @@ ofPixels DepthStream::getPixelsRef(int _near, int _far, bool invert)
 	return pix;
 }
 
+ofPixels DepthStream::getThresoldedPixels(int _near, int _far) {
+	ofPixels pix;
+	thresholdRange(getPixelsRef(), pix, _near, _far);
+	return pix;
+}
+
 void DepthStream::draw(float x, float y, float w, float h)
 {
 	if (shader)

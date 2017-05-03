@@ -36,6 +36,7 @@ bool UserTracker::setup(ofxNI2::Device &device)
 	this->device = &device;
 	mutex = new ofMutex;
 	
+	ofVec2f streamSz;
 	{
 		// get device FOV for overlay camera;
 		
@@ -46,9 +47,13 @@ bool UserTracker::setup(ofxNI2::Device &device)
 		overlay_camera.setFov(ofRadToDeg(fov));
 		overlay_camera.setNearClip(500);
 		
+		streamSz.set(stream.getVideoMode().getResolutionX(), stream.getVideoMode().getResolutionY());
 		stream.destroy();
 	}
 	
+	pixUser.allocate(streamSz.x, streamSz.y, OF_IMAGE_GRAYSCALE);
+	totPix = pixUser.getWidth()*pixUser.getHeight();
+
 	openni::Device &dev = device;
 	check_error(user_tracker.create(&dev));
 	if (!user_tracker.isValid()) return false;
@@ -111,6 +116,7 @@ void UserTracker::onNewFrame(nite::UserTracker &tracker)
 	}
 	
 	user_map = userTrackerFrame.getUserMap();
+	uMap = user_map;
 	
 	mutex->lock();
 	{
@@ -146,6 +152,7 @@ void UserTracker::processFrame() {
 	}
 
 	user_map = userTrackerFrame.getUserMap();
+	uMap = user_map;
 
 	mutex->lock();
 	{
@@ -249,6 +256,81 @@ void UserTracker::draw()
 	}
 }
 
+void UserTracker::drawId(nite::UserId _uid) {
+	map<nite::UserId, User::Ref>::iterator it = users.find(_uid);
+	if (isIteratorGood(it)) {
+		it->second->drawLight();
+	}
+}
+
+nite::Point3f UserTracker::getWorldPosForJoint(User * u, nite::JointType jt) {
+	Joint jj = u->getJoint(jt);
+	return jj.get().getPosition();
+}
+
+nite::Point3f UserTracker::getWorldPosForJoint(User::Ref ur, nite::JointType jt) {
+	Joint jj = ur->getJoint(jt);
+	return jj.get().getPosition();
+}
+
+ofVec2f UserTracker::getScreenPosForPoint(ofVec3f v, ofRectangle rVp) {
+	return getOverlayCamera().worldToScreen(v, rVp);
+}
+
+ofVec2f UserTracker::getScreenPosForJoint(ofxNiTE2::Joint jj, ofRectangle rVp) {
+	nite::Point3f pp = jj.get().getPosition();
+	ofVec3f v = ofVec3f(pp.x,pp.y, pp.z);
+	return getScreenPosForPoint(v, rVp);
+}
+
+ofVec2f UserTracker::getScreenPosForJoint(User::Ref ur, nite::JointType jt, ofRectangle rVp) {
+	Joint jj = ur->getJoint(jt);
+	return getScreenPosForJoint(jj, rVp);
+}
+
+ofPixels UserTracker::getUserPixels(int idx) {
+	if (getNumUser() >= idx && pixUser.getWidth() == user_map.getWidth()) {
+		nite::UserId uid = getUser(idx)->getId();
+		for (int i = 0; i < totPix; i++) {
+			nite::UserId * uPix = (nite::UserId *)user_map.getPixels()+i;
+			if (uid == (*uPix)) {
+				memset(pixUser.getPixels()+(i*pixUser.getNumChannels()), 255, pixUser.getNumChannels());
+			}
+			else {
+				memset(pixUser.getPixels() + (i*pixUser.getNumChannels()), 0, pixUser.getNumChannels());
+			}
+		}
+	}
+	else {
+		memset(pixUser.getPixels(), 0, totPix*pixUser.getNumChannels());
+	}
+	return pixUser;
+}
+
+ofPixels UserTracker::getUserPixelsById(nite::UserId id) {
+	if (uMap.getWidth() == pixUser.getWidth()) {
+		int umPix = uMap.getWidth()*uMap.getHeight();
+		for (int i = 0; i < umPix; i++) {
+			nite::UserId uP = uMap.getPixels()[i];
+			if (id == uP) {
+				memset(pixUser.getPixels()+(i*pixUser.getNumChannels()), 255, pixUser.getNumChannels());
+			}
+			else {
+				memset(pixUser.getPixels() + (i*pixUser.getNumChannels()), 0, pixUser.getNumChannels());
+			}
+		}
+	}
+	return pixUser;
+}
+
+map<nite::UserId, User::Ref>::iterator UserTracker::getUserIteratorById(nite::UserId _uid){
+	return users.find(_uid);
+}
+
+User::Ref UserTracker::getUserFromIterator(map<nite::UserId, User::Ref>::iterator & it) {
+	return it->second;
+}
+
 #pragma mark - User
 
 void User::updateUserData(const nite::UserData& data)
@@ -304,6 +386,12 @@ void User::draw()
 	}
 	
 	ofDrawBitmapString(status_string, center_of_mass);
+}
+
+void User::drawLight() {
+	for (int i = 0; i < joints.size(); i++) {
+		joints[i].drawLight();
+	}
 }
 
 void User::buildSkeleton()
@@ -384,6 +472,15 @@ void Joint::draw()
 	ofPopStyle();
 	
 	restoreTransformGL();
+}
+
+void Joint::drawLight() {
+	ofNode * parent = getParent();
+	if (parent) {
+		parent->transformGL();
+		ofLine(ofVec3f(0,0,0),getPosition());
+		parent->restoreTransformGL();
+	}
 }
 
 void Joint::updateJointData(const nite::SkeletonJoint& data)

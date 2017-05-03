@@ -25,4 +25,26 @@ namespace ofxNI2
 			dst_ptr++;
 		}
 	}
+
+	inline void thresholdRange(const ofShortPixels & src, ofPixels & dst, int _near, int _far) {
+		int N = src.getWidth() * src.getHeight();
+		dst.allocate(src.getWidth(), src.getHeight(), 1);
+
+		const unsigned short *src_ptr = src.getPixels();
+		unsigned char * dst_ptr = dst.getPixels();
+
+		float inv_range = 1. / (_far-_near);
+
+		for (int i = 0; i < N; i++) {
+			unsigned short C = *src_ptr;
+			if (C > _near && C < _far) {
+				*dst_ptr = 255;
+			}
+			else {
+				*dst_ptr = 0;
+			}
+			src_ptr++;
+			dst_ptr++;
+		}
+	}
 }
