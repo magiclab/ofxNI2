@@ -2,6 +2,9 @@
 
 #include "ofMain.h"
 
+#define USE_RGB
+#define USE_IR
+
 class testApp : public ofBaseApp
 {
 public:

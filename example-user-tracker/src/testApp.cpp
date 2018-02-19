@@ -12,71 +12,71 @@ void testApp::setup()
 	
 	device.setup();
 	
-	if (tracker.setup(device))
+	/*if (tracker.setup(device))
 	{
 		cout << "tracker inited" << endl;
 	}
 
 	if (ir.setup(device)) {
 		ir.start();
-	}
+	}*/
 
 	
 }
 
 void testApp::exit()
 {
-	tracker.exit();
-	device.exit();
+	//tracker.exit();
+	//device.exit();
 }
 
 //--------------------------------------------------------------
 void testApp::update()
 {
-	device.update();
+	//device.update();
 }
 
 //--------------------------------------------------------------
 void testApp::draw()
 {
 	// draw depth
-    ofPixels pix = tracker.getPixelsRef(1000, 4000);
-	depth_image.setFromPixels(pix);
-	ofSetColor(255);
-	depth_image.draw(0, 0);
+    //ofPixels pix = tracker.getPixelsRef(1000, 4000);
+	//depth_image.setFromPixels(pix);
+	//ofSetColor(255);
+	//depth_image.draw(0, 0);
 	
 	// draw in 2D
-	ofPushView();
-	tracker.getOverlayCamera().begin(ofRectangle(0, 0, depth_image.getWidth(), depth_image.getHeight()));
-	ofDrawAxis(100);
-	tracker.draw();
-	tracker.getOverlayCamera().end();
-	ofPopView();
+	//ofPushView();
+	//tracker.getOverlayCamera().begin(ofRectangle(0, 0, depth_image.getWidth(), depth_image.getHeight()));
+	//ofDrawAxis(100);
+	//tracker.draw();
+	//tracker.getOverlayCamera().end();
+	//ofPopView();
 	
 	// draw in 3D
-	cam.begin();
-	ofDrawAxis(100);
-	tracker.draw();
+	//cam.begin();
+	//ofDrawAxis(100);
+	//tracker.draw();
 	
 	// draw box
-	ofNoFill();
-	ofSetColor(255, 0, 0);
-	for (int i = 0; i < tracker.getNumUser(); i++)
-	{
-		ofxNiTE2::User::Ref user = tracker.getUser(i);
-		const ofxNiTE2::Joint &joint = user->getJoint(nite::JOINT_HEAD);
+	//ofNoFill();
+	//ofSetColor(255, 0, 0);
+	//for (int i = 0; i < tracker.getNumUser(); i++)
+	//{
+		//ofxNiTE2::User::Ref user = tracker.getUser(i);
+		//const ofxNiTE2::Joint &joint = user->getJoint(nite::JOINT_HEAD);
 		
-		joint.transformGL();
-		ofBox(300);
-		joint.restoreTransformGL();
-	}
+	//	joint.transformGL();
+	//	ofBox(300);
+	//	joint.restoreTransformGL();
+	//}
 	
-	cam.end();
+	//cam.end();
 
-	ofPushStyle();
-	ofSetColor(ofColor::white);
-	ir.draw(0,240);
-	ofPopStyle();
+	//ofPushStyle();
+	//ofSetColor(ofColor::white);
+	//ir.draw(0,240);
+	//ofPopStyle();
 }
 
 //--------------------------------------------------------------

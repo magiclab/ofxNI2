@@ -30,11 +30,19 @@ namespace ofxNI2
 #else
         path = ofFilePath::getCurrentExeDir() + "/OpenNI2/Drivers"; // windows
 #endif
+        
+        cout<<"ofxNI2::init : driver path: "<<path<<endl;
         if (ofFile::doesFileExist(path, false))
         {
 #ifndef TARGET_WIN32
             setenv("OPENNI2_DRIVERS_PATH", path.c_str(), 1);
 #endif
+            ofDirectory dirDrivers(path);
+            vector<ofFile> drivers = dirDrivers.getFiles();
+            for(int i=0;i<drivers.size();i++){
+                cout<<"   "<<drivers[i].getFileName()<<endl;
+            }
+            
             assert_error(openni::OpenNI::initialize());
         }
         else
