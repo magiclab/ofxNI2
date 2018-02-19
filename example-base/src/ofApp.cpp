@@ -1,27 +1,77 @@
 #include "ofApp.h"
 
+//#define USE_RAW_ONI
 //#define USE_RGB
 //#define USE_IR
 
+#ifdef USE_RAW_ONI
+
+#include <OpenNI.h>
+openni::Device device;
+openni::VideoStream depth;
+#else
 #include "ofxNI2.h"
 
 ofxNI2::Device *device;
+ofxNI2::DepthStream depth;
+#endif
+
 #ifdef USE_IR
 ofxNI2::IrStream ir;
 #endif
+
 #ifdef USE_RGB
 ofxNI2::ColorStream color;
 #endif
-ofxNI2::DepthStream depth;
+
 
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetFrameRate(60);
     ofSetVerticalSync(true);
     ofBackground(0);
+
+#ifdef USE_RAW_ONI
+    openni::Status rc = openni::STATUS_OK;
+    const char * deviceURI = openni::ANY_DEVICE;
+    rc = openni::OpenNI::initialize();
+    if(rc==openni::STATUS_OK){
+        cout<<"Initialization: all good"<<endl;
+    }else{
+        printf("ERROR After initialization:\n%s\n", openni::OpenNI::getExtendedError());
+    }
     
+    rc = device.open(deviceURI);
+    if(rc!=openni::STATUS_OK){
+        printf("ERROR Device open failed:\n%s\n", openni::OpenNI::getExtendedError());
+        openni::OpenNI::shutdown();
+    }else{
+        cout<<"Device: opened"<<endl;
+    }
+    
+    rc = depth.create(device, openni::SENSOR_DEPTH);
+    if(rc==openni::STATUS_OK){
+        cout<<"Depth: created"<<endl;
+        rc = depth.start();
+        if(rc!=openni::STATUS_OK){
+            printf("ERROR Couldn't start depth stream:\n%s\n", openni::OpenNI::getExtendedError());
+            depth.destroy();
+        }else{
+            cout<<"Depth Started"<<endl;
+        }
+    }else{
+        printf("ERROR Couldn't find depth stream:\n%s\n", openni::OpenNI::getExtendedError());
+    }
+    
+#else
     device = new ofxNI2::Device;
-    device->setup();
+    if(device->listDevices()>0){
+        device->setup();
+    }else{
+        cout<<"No devices found: closing"<<endl;
+        ofExit();
+        return;
+    }
     
     if (depth.setup(*device))
     {
@@ -47,6 +97,8 @@ void ofApp::setup(){
         color.start();
     }
 #endif
+    
+#endif
 }
 
 //--------------------------------------------------------------
@@ -56,6 +108,10 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+#ifdef USE_RAW_ONI
+    
+#else
+    
 #ifdef USE_IR
     ir.draw();
 #endif
@@ -65,11 +121,16 @@ void ofApp::draw(){
 #endif
     
     depth.draw(320, 0);
+#endif
 }
 
 void ofApp::exit(){
+#ifdef USE_RAW_ONI
+
+#else
     device->exit();
     delete device;
+#endif
 }
 
 //--------------------------------------------------------------

@@ -384,7 +384,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "mkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n# Copy default icon file into App/Resources\nrsync -aved \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n# Copy libfmod and change install directory for fmod to run\nrsync -aved ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Frameworks/\";\ninstall_name_tool -change @executable_path/libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\n# Copy GLUT framework (must remove for AppStore submissions)\nrsync -aved ../../../libs/glut/lib/osx/GLUT.framework \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Frameworks/\"\ncp -R ../../../addons/ofxNI2/libs/OpenNI2/lib/osx/ \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/\";\ncp -R ../../../addons/ofxNI2/libs/NiTE2/lib/osx/ \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/\";\n# If you're using OpenNI 2.2.0.3 from Structure, dylib files need their paths changed\ninstall_name_tool -change libOpenNI2.dylib @executable_path/libOpenNI2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\n";
+			shellScript = "mkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n# Copy default icon file into App/Resources\nrsync -aved \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n# Copy libfmod and change install directory for fmod to run\nrsync -aved ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Frameworks/\";\ninstall_name_tool -change @executable_path/libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\n# Copy GLUT framework (must remove for AppStore submissions)\nrsync -aved ../../../libs/glut/lib/osx/GLUT.framework \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Frameworks/\"\ncp -R ../../../addons/ofxNI2/libs/OpenNI2/lib/osx/ \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/\";\ncp -R ../../../addons/ofxNI2/libs/NiTE2/lib/osx/ \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/\";\n# If you're using OpenNI 2.2.0.3 from Structure, dylib files need their paths changed\ninstall_name_tool -change libOpenNI2.dylib @executable_path/libOpenNI2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\ninstall_name_tool -change @rpath/libspectre3.dylib @executable_path/OpenNI2/Drivers/libspectre3.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\ninstall_name_tool -change @rpath/libroyale.dylib @executable_path/OpenNI2/Drivers/libroyale.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\ninstall_name_tool -change @rpath/libroyale.3.12.0.dylib @executable_path/OpenNI2/Drivers/libroyale.3.12.0.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\ninstall_name_tool -change @rpath/libuvc.dylib @executable_path/OpenNI2/Drivers/libuvc.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -600,6 +600,10 @@
 					"$(OF_CORE_FRAMEWORKS)",
 					"$(OF_CORE_LIBS)",
 					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/libOpenNI2.dylib,
+					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/OpenNI2/Drivers/libspectre3.dylib,
+					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/OpenNI2/Drivers/libroyale.dylib,
+					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/OpenNI2/Drivers/libroyale.3.12.0.dylib,
+					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/OpenNI2/Drivers/libuvc.dylib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				WRAPPER_EXTENSION = app;
@@ -658,6 +662,10 @@
 					"$(OF_CORE_FRAMEWORKS)",
 					"$(OF_CORE_LIBS)",
 					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/libOpenNI2.dylib,
+					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/OpenNI2/Drivers/libspectre3.dylib,
+					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/OpenNI2/Drivers/libroyale.dylib,
+					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/OpenNI2/Drivers/libroyale.3.12.0.dylib,
+					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/OpenNI2/Drivers/libuvc.dylib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
