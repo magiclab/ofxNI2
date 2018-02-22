@@ -32,7 +32,8 @@ void ofApp::setup(){
     ofBackground(0);
 
 #ifdef USE_RAW_ONI
-    openni::Status rc = openni::STATUS_OK;
+    rawOni();
+    /*openni::Status rc = openni::STATUS_OK;
     const char * deviceURI = openni::ANY_DEVICE;
     rc = openni::OpenNI::initialize();
     if(rc==openni::STATUS_OK){
@@ -61,7 +62,7 @@ void ofApp::setup(){
         }
     }else{
         printf("ERROR Couldn't find depth stream:\n%s\n", openni::OpenNI::getExtendedError());
-    }
+    }*/
     
 #else
     device = new ofxNI2::Device;
@@ -99,6 +100,50 @@ void ofApp::setup(){
 #endif
     
 #endif
+}
+
+void ofApp::rawOni(){
+    const char * uri = NULL;
+    openni::Status rc = openni::STATUS_OK;
+    openni::Device g_device;
+    openni::PlaybackControl * g_PlaybackControl = NULL;
+    const openni::SensorInfo * sInfo;
+    openni::VideoStream stream;
+    
+    rc = openni::OpenNI::initialize();
+    if(rc==openni::STATUS_OK){
+        cout<<"Initialization: all good"<<endl;
+    }else{
+        printf("ERROR After initialization:\n%s\n", openni::OpenNI::getExtendedError());
+    }
+    
+    rc = g_device.open(openni::ANY_DEVICE);
+    if(rc!=openni::STATUS_OK){
+        cout<<"ERROR Device::open "<<openni::OpenNI::getExtendedError()<<endl;
+    }else{
+        cout<<"Device::open: all good!"<<endl;
+    }
+    
+    g_PlaybackControl = g_device.getPlaybackControl();
+    if(g_PlaybackControl==NULL){
+        cout<<"ERROR Device::getPlaybackControl failed"<<endl;
+    }else{
+        cout<<"ERROR Device::getPlaybackControl: all good!"<<endl;
+    }
+    
+    sInfo = g_device.getSensorInfo(openni::SENSOR_DEPTH);
+    if(sInfo==NULL){
+        cout<<"ERROR Device::getSensorInfo: no DEPTH found"<<endl;
+    }else{
+        cout<<"Device::getSensorInfo: DEPTH found!"<<endl;
+    }
+    
+    rc = stream.create(g_device, openni::SENSOR_DEPTH);
+    if(rc!=openni::STATUS_OK){
+        cout<<"ERROR VideoStream::create "<<openni::OpenNI::getExtendedError()<<endl;
+    }else{
+        cout<<"VideoStream::create: all good!"<<endl;
+    }
 }
 
 //--------------------------------------------------------------

@@ -3,11 +3,36 @@ Setup
 
 OSX
 --------
+Add dylib libraries for OpenNI2, NiTE2 and any exotic driver you might be using to Linking->Other Linker Flags.
 
-Add to Run Script
+In Run Script:
 
-	cp -R ../../../addons/ofxNI2/libs/OpenNI2/lib/osx/ "$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/";
+	############################
+	# NiTE2
+	############################
+	# copy NiTE library and files into the bundle
 	cp -R ../../../addons/ofxNI2/libs/NiTE2/lib/osx/ "$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/";
+	############################
+	# OpenNI2
+	############################
+	# Copy OpenNI library into the bundle
+	cp -R ../../../addons/ofxNI2/libs/OpenNI2/lib/osx/ "$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/";
+	# If you use OpenNI 2.2.0.3 from Structure, you need to change its path (use otool -L, if in doubt)
+	install_name_tool -change libOpenNI2.dylib @executable_path/libOpenNI2.dylib "$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME";
+
+If you're using exotic drivers, you might also have to relink them. I.e. this is the setup for libroyale based drivers:
+
+	############################
+	# Drivers
+	############################
+	# By default all drivers in lib/osx/OpenNI2/Drivers will be copied into the bundle; if you want less, jut edit the previous passage
+
+	#if you're planning to load libroyale drivers, prepare to relink a bunch of stuff
+	install_name_tool -change @rpath/libspectre3.dylib @executable_path/OpenNI2/Drivers/libspectre3.dylib "$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME";
+	install_name_tool -change @rpath/libuvc.dylib @executable_path/OpenNI2/Drivers/libuvc.dylib "$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME";
+	install_name_tool -change @rpath/libroyale.3.12.0.dylib @executable_path/OpenNI2/Drivers/libroyale.3.12.0.dylib "$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME";
+	install_name_tool -change @rpath/libroyaleONI2.0.dylib @executable_path/OpenNI2/Drivers/libroyaleONI2.0.dylib "$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME";
+	install_name_tool -change libOpenNI2.dylib @executable_path/libOpenNI2.dylib "$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/OpenNI2/Drivers/libroyaleONI2.0.dylib";
 
 Uncomment
 
