@@ -114,21 +114,21 @@ void Device::setLogLevel(ofLogLevel level)
     check_error(openni::OpenNI::setLogConsoleOutput(false));
     */
 
-    if(level == OF_LOG_SILENT) {
-        setenv("LIBFREENECT2_LOGGER_LEVEL","none",true);
-    } else if (level == OF_LOG_FATAL_ERROR) {
-        setenv("LIBFREENECT2_LOGGER_LEVEL","error",true);
-    } else if (level == OF_LOG_ERROR) {
-        setenv("LIBFREENECT2_LOGGER_LEVEL","error",true);
-    } else if (level == OF_LOG_WARNING) {
-        setenv("LIBFREENECT2_LOGGER_LEVEL","warning",true);
-    } else if (level == OF_LOG_NOTICE) {
-        setenv("LIBFREENECT2_LOGGER_LEVEL","info",true);
-    } else if (level == OF_LOG_VERBOSE) {
-        setenv("LIBFREENECT2_LOGGER_LEVEL","debug",true);
-    }
-
-    ofLogNotice() << "LIBFREENECT2_LOGGER_LEVEL = " << getenv("LIBFREENECT2_LOGGER_LEVEL");
+//    if(level == OF_LOG_SILENT) {
+//        setenv("LIBFREENECT2_LOGGER_LEVEL","none",true);
+//    } else if (level == OF_LOG_FATAL_ERROR) {
+//        setenv("LIBFREENECT2_LOGGER_LEVEL","error",true);
+//    } else if (level == OF_LOG_ERROR) {
+//        setenv("LIBFREENECT2_LOGGER_LEVEL","error",true);
+//    } else if (level == OF_LOG_WARNING) {
+//        setenv("LIBFREENECT2_LOGGER_LEVEL","warning",true);
+//    } else if (level == OF_LOG_NOTICE) {
+//        setenv("LIBFREENECT2_LOGGER_LEVEL","info",true);
+//    } else if (level == OF_LOG_VERBOSE) {
+//        setenv("LIBFREENECT2_LOGGER_LEVEL","debug",true);
+//    }
+//
+//    ofLogNotice() << "LIBFREENECT2_LOGGER_LEVEL = " << getenv("LIBFREENECT2_LOGGER_LEVEL");
 
 }
 

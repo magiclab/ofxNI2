@@ -40,6 +40,7 @@
 		5643FF14417B90372963DFE3 /* OniProperties.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OniProperties.h; path = ../../../addons/ofxNI2/libs/OpenNI2/include/ni2/OniProperties.h; sourceTree = SOURCE_ROOT; };
 		585773FDB62C014C4937D19F /* OniPlatformAndroid-Arm.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = "OniPlatformAndroid-Arm.h"; path = "../../../addons/ofxNI2/libs/OpenNI2/include/ni2/Android-Arm/OniPlatformAndroid-Arm.h"; sourceTree = SOURCE_ROOT; };
 		60BBBAD461D233EC2BE998A9 /* OniCTypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OniCTypes.h; path = ../../../addons/ofxNI2/libs/OpenNI2/include/ni2/OniCTypes.h; sourceTree = SOURCE_ROOT; };
+		640E4A276245E1661E7D8D02 /* PrimeSense.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = PrimeSense.h; path = ../../../addons/ofxNI2/libs/OpenNI2/include/ni2/PrimeSense.h; sourceTree = SOURCE_ROOT; };
 		6566CAFA01627BC29B593C5D /* OniPlatform.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OniPlatform.h; path = ../../../addons/ofxNI2/libs/OpenNI2/include/ni2/OniPlatform.h; sourceTree = SOURCE_ROOT; };
 		66B83FD2427258CC34CE748A /* OniCProperties.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OniCProperties.h; path = ../../../addons/ofxNI2/libs/OpenNI2/include/ni2/OniCProperties.h; sourceTree = SOURCE_ROOT; };
 		693116443F408097FADAB561 /* DepthReprojection.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = DepthReprojection.h; path = ../../../addons/ofxNI2/src/utils/DepthReprojection.h; sourceTree = SOURCE_ROOT; };
@@ -47,6 +48,7 @@
 		728719B93F438A61B85FC443 /* NiteVersion.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = NiteVersion.h; path = ../../../addons/ofxNI2/libs/NiTE2/include/NiteVersion.h; sourceTree = SOURCE_ROOT; };
 		8493AE107518EFDB3A6F4E75 /* OniCAPI.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OniCAPI.h; path = ../../../addons/ofxNI2/libs/OpenNI2/include/ni2/OniCAPI.h; sourceTree = SOURCE_ROOT; };
 		8A201F3F6E819DC68A45DF71 /* NiteCEnums.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = NiteCEnums.h; path = ../../../addons/ofxNI2/libs/NiTE2/include/NiteCEnums.h; sourceTree = SOURCE_ROOT; };
+		9722FC9301DC7455DD71B596 /* PSLink.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = PSLink.h; path = ../../../addons/ofxNI2/libs/OpenNI2/include/ni2/PSLink.h; sourceTree = SOURCE_ROOT; };
 		986F8FA459B3213AEBD1DE25 /* OniPlatformMacOSX.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OniPlatformMacOSX.h; path = ../../../addons/ofxNI2/libs/OpenNI2/include/ni2/MacOSX/OniPlatformMacOSX.h; sourceTree = SOURCE_ROOT; };
 		99D38AA34A91A2409675BD86 /* DepthRemapToRange.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = DepthRemapToRange.h; path = ../../../addons/ofxNI2/src/utils/DepthRemapToRange.h; sourceTree = SOURCE_ROOT; };
 		A13203A8B3F7F5188F617B91 /* DoubleBuffer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = DoubleBuffer.h; path = ../../../addons/ofxNI2/src/utils/DoubleBuffer.h; sourceTree = SOURCE_ROOT; };
@@ -293,8 +295,8 @@
 		36FD83A2982334BA894B4C24 /* ofxNI2 */ = {
 			isa = PBXGroup;
 			children = (
-				163E600E54D5B164AEA75B99 /* src */,
 				205DD9051EDC8FB908B5F39D /* libs */,
+				163E600E54D5B164AEA75B99 /* src */,
 			);
 			name = ofxNI2;
 			sourceTree = "<group>";
@@ -366,6 +368,8 @@
 				4F406A9B2CB220B80A79084F /* OniVersion.h */,
 				F14C9269B9282C3F3ECC4D64 /* OpenNI.h */,
 				D58791BE51C7B698AE48CD83 /* PS1080.h */,
+				9722FC9301DC7455DD71B596 /* PSLink.h */,
+				640E4A276245E1661E7D8D02 /* PrimeSense.h */,
 				6EB1492F519CEC14887D752F /* Win32 */,
 			);
 			name = ni2;
@@ -814,7 +818,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "mkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n# Copy default icon file into App/Resources\nrsync -aved \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n# Copy libfmod and change install directory for fmod to run\nrsync -aved \"$OF_PATH/libs/fmodex/lib/osx/libfmodex.dylib\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Frameworks/\";\ninstall_name_tool -change @executable_path/libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\n\ncp -R ../../../addons/ofxNI2/libs/OpenNI2/lib/osx/ \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/\";\n\ncp -R ../../../addons/ofxNI2/libs/NiTE2/lib/osx/libNiTE2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libNiTE2.dylib\";\n\ncp -R ../../../addons/ofxNI2/libs/NiTE2/lib/osx/NiTE.ini \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/NiTE.ini\";\n\ncp -R ../../../addons/ofxNI2/libs/NITE2-data/NiTE2 \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\";\n\ninstall_name_tool -change libOpenNI2.dylib @executable_path/../MacOS/libOpenNI2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\n\n\n\necho \"$GCC_PREPROCESSOR_DEFINITIONS\";\n";
+			shellScript = "mkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n# Copy default icon file into App/Resources\nrsync -aved \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n# Copy libfmod and change install directory for fmod to run\nrsync -aved \"$OF_PATH/libs/fmodex/lib/osx/libfmodex.dylib\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Frameworks/\";\ninstall_name_tool -change @executable_path/libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\n\ncp -R ../../../addons/ofxNI2/libs/OpenNI2/lib/osx/ \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/\"; \n\ncp -R ../../../addons/ofxNI2/libs/NiTE2/lib/osx/libNiTE2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libNiTE2.dylib\";\n\ncp -R ../../../addons/ofxNI2/libs/NiTE2/lib/osx/NiTE.ini \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/NiTE.ini\";\n\ncp -R ../../../addons/ofxNI2/libs/NITE2-data/NiTE2 \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\";\n\ninstall_name_tool -change libOpenNI2.dylib @executable_path/libOpenNI2.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\n\n\necho \"$GCC_PREPROCESSOR_DEFINITIONS\";\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -859,12 +863,14 @@
 					src,
 					src,
 					../../../addons/ofxNI2/libs,
+					"../../../addons/ofxNI2/libs/NITE2-data",
+					"../../../addons/ofxNI2/libs/NITE2-data/NiTE2",
+					"../../../addons/ofxNI2/libs/NITE2-data/NiTE2/Data",
 					../../../addons/ofxNI2/libs/NiTE2,
 					../../../addons/ofxNI2/libs/NiTE2/include,
 					../../../addons/ofxNI2/libs/NiTE2/lib,
 					../../../addons/ofxNI2/libs/NiTE2/lib/osx,
 					../../../addons/ofxNI2/libs/NiTE2/lib/osx/NiTE2,
-					../../../addons/ofxNI2/libs/NiTE2/lib/osx/NiTE2/Data,
 					../../../addons/ofxNI2/libs/OpenNI2,
 					../../../addons/ofxNI2/libs/OpenNI2/include,
 					../../../addons/ofxNI2/libs/OpenNI2/include/ni2,
@@ -878,6 +884,8 @@
 					../../../addons/ofxNI2/libs/OpenNI2/lib/osx,
 					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/OpenNI2,
 					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/OpenNI2/Drivers,
+					../../../addons/ofxNI2/libs/OpenNI2/lib/win32,
+					../../../addons/ofxNI2/libs/OpenNI2/lib/win64,
 					../../../addons/ofxNI2/src,
 					../../../addons/ofxNI2/src/utils,
 				);
@@ -905,12 +913,14 @@
 					src,
 					src,
 					../../../addons/ofxNI2/libs,
+					"../../../addons/ofxNI2/libs/NITE2-data",
+					"../../../addons/ofxNI2/libs/NITE2-data/NiTE2",
+					"../../../addons/ofxNI2/libs/NITE2-data/NiTE2/Data",
 					../../../addons/ofxNI2/libs/NiTE2,
 					../../../addons/ofxNI2/libs/NiTE2/include,
 					../../../addons/ofxNI2/libs/NiTE2/lib,
 					../../../addons/ofxNI2/libs/NiTE2/lib/osx,
 					../../../addons/ofxNI2/libs/NiTE2/lib/osx/NiTE2,
-					../../../addons/ofxNI2/libs/NiTE2/lib/osx/NiTE2/Data,
 					../../../addons/ofxNI2/libs/OpenNI2,
 					../../../addons/ofxNI2/libs/OpenNI2/include,
 					../../../addons/ofxNI2/libs/OpenNI2/include/ni2,
@@ -924,6 +934,8 @@
 					../../../addons/ofxNI2/libs/OpenNI2/lib/osx,
 					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/OpenNI2,
 					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/OpenNI2/Drivers,
+					../../../addons/ofxNI2/libs/OpenNI2/lib/win32,
+					../../../addons/ofxNI2/libs/OpenNI2/lib/win64,
 					../../../addons/ofxNI2/src,
 					../../../addons/ofxNI2/src/utils,
 				);
@@ -969,12 +981,14 @@
 					src,
 					src,
 					../../../addons/ofxNI2/libs,
+					"../../../addons/ofxNI2/libs/NITE2-data",
+					"../../../addons/ofxNI2/libs/NITE2-data/NiTE2",
+					"../../../addons/ofxNI2/libs/NITE2-data/NiTE2/Data",
 					../../../addons/ofxNI2/libs/NiTE2,
 					../../../addons/ofxNI2/libs/NiTE2/include,
 					../../../addons/ofxNI2/libs/NiTE2/lib,
 					../../../addons/ofxNI2/libs/NiTE2/lib/osx,
 					../../../addons/ofxNI2/libs/NiTE2/lib/osx/NiTE2,
-					../../../addons/ofxNI2/libs/NiTE2/lib/osx/NiTE2/Data,
 					../../../addons/ofxNI2/libs/OpenNI2,
 					../../../addons/ofxNI2/libs/OpenNI2/include,
 					../../../addons/ofxNI2/libs/OpenNI2/include/ni2,
@@ -988,6 +1002,8 @@
 					../../../addons/ofxNI2/libs/OpenNI2/lib/osx,
 					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/OpenNI2,
 					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/OpenNI2/Drivers,
+					../../../addons/ofxNI2/libs/OpenNI2/lib/win32,
+					../../../addons/ofxNI2/libs/OpenNI2/lib/win64,
 					../../../addons/ofxNI2/src,
 					../../../addons/ofxNI2/src/utils,
 				);
@@ -1026,12 +1042,14 @@
 					src,
 					src,
 					../../../addons/ofxNI2/libs,
+					"../../../addons/ofxNI2/libs/NITE2-data",
+					"../../../addons/ofxNI2/libs/NITE2-data/NiTE2",
+					"../../../addons/ofxNI2/libs/NITE2-data/NiTE2/Data",
 					../../../addons/ofxNI2/libs/NiTE2,
 					../../../addons/ofxNI2/libs/NiTE2/include,
 					../../../addons/ofxNI2/libs/NiTE2/lib,
 					../../../addons/ofxNI2/libs/NiTE2/lib/osx,
 					../../../addons/ofxNI2/libs/NiTE2/lib/osx/NiTE2,
-					../../../addons/ofxNI2/libs/NiTE2/lib/osx/NiTE2/Data,
 					../../../addons/ofxNI2/libs/OpenNI2,
 					../../../addons/ofxNI2/libs/OpenNI2/include,
 					../../../addons/ofxNI2/libs/OpenNI2/include/ni2,
@@ -1045,6 +1063,8 @@
 					../../../addons/ofxNI2/libs/OpenNI2/lib/osx,
 					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/OpenNI2,
 					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/OpenNI2/Drivers,
+					../../../addons/ofxNI2/libs/OpenNI2/lib/win32,
+					../../../addons/ofxNI2/libs/OpenNI2/lib/win64,
 					../../../addons/ofxNI2/src,
 					../../../addons/ofxNI2/src/utils,
 				);
@@ -1072,12 +1092,14 @@
 					src,
 					src,
 					../../../addons/ofxNI2/libs,
+					"../../../addons/ofxNI2/libs/NITE2-data",
+					"../../../addons/ofxNI2/libs/NITE2-data/NiTE2",
+					"../../../addons/ofxNI2/libs/NITE2-data/NiTE2/Data",
 					../../../addons/ofxNI2/libs/NiTE2,
 					../../../addons/ofxNI2/libs/NiTE2/include,
 					../../../addons/ofxNI2/libs/NiTE2/lib,
 					../../../addons/ofxNI2/libs/NiTE2/lib/osx,
 					../../../addons/ofxNI2/libs/NiTE2/lib/osx/NiTE2,
-					../../../addons/ofxNI2/libs/NiTE2/lib/osx/NiTE2/Data,
 					../../../addons/ofxNI2/libs/OpenNI2,
 					../../../addons/ofxNI2/libs/OpenNI2/include,
 					../../../addons/ofxNI2/libs/OpenNI2/include/ni2,
@@ -1091,6 +1113,8 @@
 					../../../addons/ofxNI2/libs/OpenNI2/lib/osx,
 					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/OpenNI2,
 					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/OpenNI2/Drivers,
+					../../../addons/ofxNI2/libs/OpenNI2/lib/win32,
+					../../../addons/ofxNI2/libs/OpenNI2/lib/win64,
 					../../../addons/ofxNI2/src,
 					../../../addons/ofxNI2/src/utils,
 				);
@@ -1125,12 +1149,14 @@
 					src,
 					src,
 					../../../addons/ofxNI2/libs,
+					"../../../addons/ofxNI2/libs/NITE2-data",
+					"../../../addons/ofxNI2/libs/NITE2-data/NiTE2",
+					"../../../addons/ofxNI2/libs/NITE2-data/NiTE2/Data",
 					../../../addons/ofxNI2/libs/NiTE2,
 					../../../addons/ofxNI2/libs/NiTE2/include,
 					../../../addons/ofxNI2/libs/NiTE2/lib,
 					../../../addons/ofxNI2/libs/NiTE2/lib/osx,
 					../../../addons/ofxNI2/libs/NiTE2/lib/osx/NiTE2,
-					../../../addons/ofxNI2/libs/NiTE2/lib/osx/NiTE2/Data,
 					../../../addons/ofxNI2/libs/OpenNI2,
 					../../../addons/ofxNI2/libs/OpenNI2/include,
 					../../../addons/ofxNI2/libs/OpenNI2/include/ni2,
@@ -1144,6 +1170,8 @@
 					../../../addons/ofxNI2/libs/OpenNI2/lib/osx,
 					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/OpenNI2,
 					../../../addons/ofxNI2/libs/OpenNI2/lib/osx/OpenNI2/Drivers,
+					../../../addons/ofxNI2/libs/OpenNI2/lib/win32,
+					../../../addons/ofxNI2/libs/OpenNI2/lib/win64,
 					../../../addons/ofxNI2/src,
 					../../../addons/ofxNI2/src/utils,
 				);
