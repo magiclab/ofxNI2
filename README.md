@@ -3,7 +3,7 @@ Introduction
 This is an OpenFrameworks addon for using the Kinect V1 (macos so far) and V2 with OpenNI.
 Support for the Kinect V2 on Linux/Windows/Mac using the OpenNI driver from Libfreenect2 (https://github.com/OpenKinect/libfreenect2/). 
 
-Generally the point of this would be to use the NiTE skeleton tracking library. NiTE is no longer publicly available, but the binaries are included in this addon. If you just need to get the Kinect's depth texture, you're probably better off using my other addon which doesn't require OpenNI, https://github.com/pierrep/ofxLibFreenect2
+Generally the point of this would be to use the NiTE skeleton tracking library. NiTE is no longer publicly available, but the binaries are included in this addon. If you just need to get the Kinect's depth texture, you're probably better off using the regular ofxKinect (included in OF download) or [ofxKinectV2](https://github.com/ofTheo/ofxKinectV2) addons.
 
 The included libfreenect2-openni driver is using the OpenCL back-end. Compile your own version if you need Cuda or any one of the other Libfreenect2 back-ends.
 
@@ -11,8 +11,7 @@ It also supports the Orbbec Astra camera, but only for receiving the depth data,
 
 Setup
 =====
-This addon has been tested on openframeworks 0.10.1. If you want to use it on 0.9.8, please use the branch with the same name.
-
+This addon has been tested on openframeworks 0.10.1.
 
 All Platforms
 -------------
