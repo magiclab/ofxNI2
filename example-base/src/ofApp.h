@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxRoyaleDevice.hpp"
 
 class ofApp : public ofBaseApp{
 

@@ -14,6 +14,7 @@ openni::VideoStream depth;
 
 ofxNI2::Device *device;
 ofxNI2::DepthStream depth;
+ofxRoyale::ofxRoyaleDevice pmd;
 #endif
 
 #ifdef USE_IR
@@ -73,6 +74,8 @@ void ofApp::setup(){
         ofExit();
         return;
     }
+    
+    
     
     if (depth.setup(*device))
     {
@@ -148,7 +151,6 @@ void ofApp::rawOni(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
 }
 
 //--------------------------------------------------------------

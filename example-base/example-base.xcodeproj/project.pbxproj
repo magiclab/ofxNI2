@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		40C55F69F602D3BE3D8C040C /* ofxNI2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38EF19EFE915639D9CF24E91 /* ofxNI2.cpp */; };
+		859B76EE24D06334002452B6 /* ofxRoyaleDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 859B76EC24D06334002452B6 /* ofxRoyaleDevice.cpp */; };
 		DFA805C945270BCAE6824DC1 /* ofxNiTE2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB56539C4EACAAB391D1E131 /* ofxNiTE2.cpp */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
@@ -47,6 +48,82 @@
 		6948C3EA254B73F9A0C8DC47 /* TimedomainMedianFilter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TimedomainMedianFilter.h; path = ../../../addons/ofxNI2/src/utils/TimedomainMedianFilter.h; sourceTree = SOURCE_ROOT; };
 		728719B93F438A61B85FC443 /* NiteVersion.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = NiteVersion.h; path = ../../../addons/ofxNI2/libs/NiTE2/include/NiteVersion.h; sourceTree = SOURCE_ROOT; };
 		8493AE107518EFDB3A6F4E75 /* OniCAPI.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OniCAPI.h; path = ../../../addons/ofxNI2/libs/OpenNI2/include/ni2/OniCAPI.h; sourceTree = SOURCE_ROOT; };
+		859B76EC24D06334002452B6 /* ofxRoyaleDevice.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRoyaleDevice.cpp; sourceTree = "<group>"; };
+		859B76ED24D06334002452B6 /* ofxRoyaleDevice.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ofxRoyaleDevice.hpp; sourceTree = "<group>"; };
+		859B773E24D06870002452B6 /* libuvc_config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libuvc_config.h; sourceTree = "<group>"; };
+		859B773F24D06870002452B6 /* libuvc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libuvc.h; sourceTree = "<group>"; };
+		859B774124D06870002452B6 /* Pair.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Pair.hpp; sourceTree = "<group>"; };
+		859B774224D06870002452B6 /* IReplay.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IReplay.hpp; sourceTree = "<group>"; };
+		859B774324D06870002452B6 /* IRecord.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IRecord.hpp; sourceTree = "<group>"; };
+		859B774424D06870002452B6 /* ICameraDevice.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ICameraDevice.hpp; sourceTree = "<group>"; };
+		859B774524D06870002452B6 /* IEvent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IEvent.hpp; sourceTree = "<group>"; };
+		859B774624D06870002452B6 /* IRImage.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IRImage.hpp; sourceTree = "<group>"; };
+		859B774724D06870002452B6 /* DepthData.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DepthData.hpp; sourceTree = "<group>"; };
+		859B774824D06870002452B6 /* IExtendedData.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IExtendedData.hpp; sourceTree = "<group>"; };
+		859B774924D06870002452B6 /* IExtendedDataListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IExtendedDataListener.hpp; sourceTree = "<group>"; };
+		859B774A24D06870002452B6 /* ProcessingFlag.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ProcessingFlag.hpp; sourceTree = "<group>"; };
+		859B774B24D06870002452B6 /* IExposureListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IExposureListener.hpp; sourceTree = "<group>"; };
+		859B774C24D06870002452B6 /* Vector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vector.hpp; sourceTree = "<group>"; };
+		859B774D24D06870002452B6 /* IIRImageListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IIRImageListener.hpp; sourceTree = "<group>"; };
+		859B774E24D06870002452B6 /* IDepthImageListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IDepthImageListener.hpp; sourceTree = "<group>"; };
+		859B774F24D06870002452B6 /* RawData.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RawData.hpp; sourceTree = "<group>"; };
+		859B775024D06870002452B6 /* TriggerMode.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TriggerMode.hpp; sourceTree = "<group>"; };
+		859B775124D06870002452B6 /* Variant.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Variant.hpp; sourceTree = "<group>"; };
+		859B775224D06870002452B6 /* IEventListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IEventListener.hpp; sourceTree = "<group>"; };
+		859B775324D06870002452B6 /* CallbackData.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CallbackData.hpp; sourceTree = "<group>"; };
+		859B775424D06870002452B6 /* LensParameters.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LensParameters.hpp; sourceTree = "<group>"; };
+		859B775524D06870002452B6 /* Status.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Status.hpp; sourceTree = "<group>"; };
+		859B775624D06870002452B6 /* IDepthDataListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IDepthDataListener.hpp; sourceTree = "<group>"; };
+		859B775724D06870002452B6 /* IPlaybackStopListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IPlaybackStopListener.hpp; sourceTree = "<group>"; };
+		859B775824D06870002452B6 /* UsbProbeDataListRoyale.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UsbProbeDataListRoyale.hpp; sourceTree = "<group>"; };
+		859B775924D06870002452B6 /* IExposureListener2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IExposureListener2.hpp; sourceTree = "<group>"; };
+		859B775A24D06870002452B6 /* ExposureMode.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ExposureMode.hpp; sourceTree = "<group>"; };
+		859B775B24D06870002452B6 /* SparsePointCloud.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SparsePointCloud.hpp; sourceTree = "<group>"; };
+		859B775C24D06870002452B6 /* String.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = String.hpp; sourceTree = "<group>"; };
+		859B775D24D06870002452B6 /* ISparsePointCloudListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ISparsePointCloudListener.hpp; sourceTree = "<group>"; };
+		859B775E24D06870002452B6 /* IRecordStopListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IRecordStopListener.hpp; sourceTree = "<group>"; };
+		859B775F24D06870002452B6 /* IntermediateData.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IntermediateData.hpp; sourceTree = "<group>"; };
+		859B776024D06870002452B6 /* BridgeController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BridgeController.hpp; sourceTree = "<group>"; };
+		859B776124D06870002452B6 /* StreamId.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = StreamId.hpp; sourceTree = "<group>"; };
+		859B776224D06870002452B6 /* ModuleConfigData.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ModuleConfigData.hpp; sourceTree = "<group>"; };
+		859B776324D06870002452B6 /* CharacterizationHelper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CharacterizationHelper.hpp; sourceTree = "<group>"; };
+		859B776424D06870002452B6 /* DepthImage.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DepthImage.hpp; sourceTree = "<group>"; };
+		859B776524D06870002452B6 /* Iterator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Iterator.hpp; sourceTree = "<group>"; };
+		859B776624D06870002452B6 /* CameraManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CameraManager.hpp; sourceTree = "<group>"; };
+		859B776724D06870002452B6 /* Definitions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Definitions.hpp; sourceTree = "<group>"; };
+		859B776824D06870002452B6 /* CameraAccessLevel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CameraAccessLevel.hpp; sourceTree = "<group>"; };
+		859B776924D06870002452B6 /* royale.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = royale.hpp; sourceTree = "<group>"; };
+		859B776B24D06870002452B6 /* royaleCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = royaleCAPI.h; sourceTree = "<group>"; };
+		859B776C24D06870002452B6 /* ExposureCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExposureCAPI.h; sourceTree = "<group>"; };
+		859B776D24D06870002452B6 /* IntermediateDataCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntermediateDataCAPI.h; sourceTree = "<group>"; };
+		859B776E24D06870002452B6 /* VariantCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VariantCAPI.h; sourceTree = "<group>"; };
+		859B776F24D06870002452B6 /* CameraManagerCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraManagerCAPI.h; sourceTree = "<group>"; };
+		859B777024D06870002452B6 /* StatusCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatusCAPI.h; sourceTree = "<group>"; };
+		859B777124D06870002452B6 /* DepthDataCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DepthDataCAPI.h; sourceTree = "<group>"; };
+		859B777224D06870002452B6 /* RecordCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordCAPI.h; sourceTree = "<group>"; };
+		859B777324D06870002452B6 /* IRImageCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRImageCAPI.h; sourceTree = "<group>"; };
+		859B777424D06870002452B6 /* TriggerModeCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TriggerModeCAPI.h; sourceTree = "<group>"; };
+		859B777524D06870002452B6 /* DepthImageCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DepthImageCAPI.h; sourceTree = "<group>"; };
+		859B777624D06870002452B6 /* CAPIVersion220.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPIVersion220.h; sourceTree = "<group>"; };
+		859B777724D06870002452B6 /* CAPIVersion31000.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPIVersion31000.h; sourceTree = "<group>"; };
+		859B777824D06870002452B6 /* CAPIVersion320.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPIVersion320.h; sourceTree = "<group>"; };
+		859B777924D06870002452B6 /* CAPIVersion330.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPIVersion330.h; sourceTree = "<group>"; };
+		859B777A24D06870002452B6 /* ExposureModeCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExposureModeCAPI.h; sourceTree = "<group>"; };
+		859B777B24D06870002452B6 /* CameraDeviceCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraDeviceCAPI.h; sourceTree = "<group>"; };
+		859B777C24D06870002452B6 /* CAPIVersion300.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPIVersion300.h; sourceTree = "<group>"; };
+		859B777D24D06870002452B6 /* CAPIVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPIVersion.h; sourceTree = "<group>"; };
+		859B777E24D06870002452B6 /* SparsePointCloudCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SparsePointCloudCAPI.h; sourceTree = "<group>"; };
+		859B777F24D06870002452B6 /* CAPIMigration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPIMigration.h; sourceTree = "<group>"; };
+		859B778024D06870002452B6 /* DataStructuresCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataStructuresCAPI.h; sourceTree = "<group>"; };
+		859B778124D06870002452B6 /* RawDataCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RawDataCAPI.h; sourceTree = "<group>"; };
+		859B778224D06870002452B6 /* EventCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventCAPI.h; sourceTree = "<group>"; };
+		859B778324D06870002452B6 /* DefinitionsCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefinitionsCAPI.h; sourceTree = "<group>"; };
+		859B778424D06870002452B6 /* ProcessingParametersCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProcessingParametersCAPI.h; sourceTree = "<group>"; };
+		859B778524D06870002452B6 /* LensParametersCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LensParametersCAPI.h; sourceTree = "<group>"; };
+		859B778624D06870002452B6 /* ExtendedDataCAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtendedDataCAPI.h; sourceTree = "<group>"; };
+		859B778824D06A1E002452B6 /* RoyaleOpenNI2Driver.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RoyaleOpenNI2Driver.hpp; sourceTree = "<group>"; };
+		859B778924D06A1E002452B6 /* RoyaleOpenNI2DepthStream.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RoyaleOpenNI2DepthStream.hpp; sourceTree = "<group>"; };
+		859B778A24D06A1E002452B6 /* RoyaleOpenNI2Device.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RoyaleOpenNI2Device.hpp; sourceTree = "<group>"; };
 		8A201F3F6E819DC68A45DF71 /* NiteCEnums.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = NiteCEnums.h; path = ../../../addons/ofxNI2/libs/NiTE2/include/NiteCEnums.h; sourceTree = SOURCE_ROOT; };
 		9722FC9301DC7455DD71B596 /* PSLink.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = PSLink.h; path = ../../../addons/ofxNI2/libs/OpenNI2/include/ni2/PSLink.h; sourceTree = SOURCE_ROOT; };
 		986F8FA459B3213AEBD1DE25 /* OniPlatformMacOSX.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OniPlatformMacOSX.h; path = ../../../addons/ofxNI2/libs/OpenNI2/include/ni2/MacOSX/OniPlatformMacOSX.h; sourceTree = SOURCE_ROOT; };
@@ -266,6 +343,7 @@
 		163E600E54D5B164AEA75B99 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				859B76EB24D06308002452B6 /* royale */,
 				38EF19EFE915639D9CF24E91 /* ofxNI2.cpp */,
 				514F1458B89D2B50385DD647 /* ofxNI2.h */,
 				CB56539C4EACAAB391D1E131 /* ofxNiTE2.cpp */,
@@ -278,6 +356,7 @@
 		205DD9051EDC8FB908B5F39D /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				859B773B24D06870002452B6 /* Royale */,
 				5B173629D4EDAF37B31A64D6 /* NiTE2 */,
 				B1F83F325869B26D1A60D856 /* OpenNI2 */,
 			);
@@ -348,6 +427,138 @@
 				2D6E76763F7F1B29DA42351F /* OniPlatformWin32.h */,
 			);
 			name = Win32;
+			sourceTree = "<group>";
+		};
+		859B76EB24D06308002452B6 /* royale */ = {
+			isa = PBXGroup;
+			children = (
+				859B76EC24D06334002452B6 /* ofxRoyaleDevice.cpp */,
+				859B76ED24D06334002452B6 /* ofxRoyaleDevice.hpp */,
+			);
+			name = royale;
+			path = ../src/royale;
+			sourceTree = "<group>";
+		};
+		859B773B24D06870002452B6 /* Royale */ = {
+			isa = PBXGroup;
+			children = (
+				859B773C24D06870002452B6 /* include */,
+			);
+			name = Royale;
+			path = ../libs/Royale;
+			sourceTree = "<group>";
+		};
+		859B773C24D06870002452B6 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				859B778724D06A1E002452B6 /* driver */,
+				859B773D24D06870002452B6 /* libuvc */,
+				859B774024D06870002452B6 /* royale */,
+				859B776924D06870002452B6 /* royale.hpp */,
+				859B776A24D06870002452B6 /* royaleCAPI */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		859B773D24D06870002452B6 /* libuvc */ = {
+			isa = PBXGroup;
+			children = (
+				859B773E24D06870002452B6 /* libuvc_config.h */,
+				859B773F24D06870002452B6 /* libuvc.h */,
+			);
+			path = libuvc;
+			sourceTree = "<group>";
+		};
+		859B774024D06870002452B6 /* royale */ = {
+			isa = PBXGroup;
+			children = (
+				859B774124D06870002452B6 /* Pair.hpp */,
+				859B774224D06870002452B6 /* IReplay.hpp */,
+				859B774324D06870002452B6 /* IRecord.hpp */,
+				859B774424D06870002452B6 /* ICameraDevice.hpp */,
+				859B774524D06870002452B6 /* IEvent.hpp */,
+				859B774624D06870002452B6 /* IRImage.hpp */,
+				859B774724D06870002452B6 /* DepthData.hpp */,
+				859B774824D06870002452B6 /* IExtendedData.hpp */,
+				859B774924D06870002452B6 /* IExtendedDataListener.hpp */,
+				859B774A24D06870002452B6 /* ProcessingFlag.hpp */,
+				859B774B24D06870002452B6 /* IExposureListener.hpp */,
+				859B774C24D06870002452B6 /* Vector.hpp */,
+				859B774D24D06870002452B6 /* IIRImageListener.hpp */,
+				859B774E24D06870002452B6 /* IDepthImageListener.hpp */,
+				859B774F24D06870002452B6 /* RawData.hpp */,
+				859B775024D06870002452B6 /* TriggerMode.hpp */,
+				859B775124D06870002452B6 /* Variant.hpp */,
+				859B775224D06870002452B6 /* IEventListener.hpp */,
+				859B775324D06870002452B6 /* CallbackData.hpp */,
+				859B775424D06870002452B6 /* LensParameters.hpp */,
+				859B775524D06870002452B6 /* Status.hpp */,
+				859B775624D06870002452B6 /* IDepthDataListener.hpp */,
+				859B775724D06870002452B6 /* IPlaybackStopListener.hpp */,
+				859B775824D06870002452B6 /* UsbProbeDataListRoyale.hpp */,
+				859B775924D06870002452B6 /* IExposureListener2.hpp */,
+				859B775A24D06870002452B6 /* ExposureMode.hpp */,
+				859B775B24D06870002452B6 /* SparsePointCloud.hpp */,
+				859B775C24D06870002452B6 /* String.hpp */,
+				859B775D24D06870002452B6 /* ISparsePointCloudListener.hpp */,
+				859B775E24D06870002452B6 /* IRecordStopListener.hpp */,
+				859B775F24D06870002452B6 /* IntermediateData.hpp */,
+				859B776024D06870002452B6 /* BridgeController.hpp */,
+				859B776124D06870002452B6 /* StreamId.hpp */,
+				859B776224D06870002452B6 /* ModuleConfigData.hpp */,
+				859B776324D06870002452B6 /* CharacterizationHelper.hpp */,
+				859B776424D06870002452B6 /* DepthImage.hpp */,
+				859B776524D06870002452B6 /* Iterator.hpp */,
+				859B776624D06870002452B6 /* CameraManager.hpp */,
+				859B776724D06870002452B6 /* Definitions.hpp */,
+				859B776824D06870002452B6 /* CameraAccessLevel.hpp */,
+			);
+			path = royale;
+			sourceTree = "<group>";
+		};
+		859B776A24D06870002452B6 /* royaleCAPI */ = {
+			isa = PBXGroup;
+			children = (
+				859B776B24D06870002452B6 /* royaleCAPI.h */,
+				859B776C24D06870002452B6 /* ExposureCAPI.h */,
+				859B776D24D06870002452B6 /* IntermediateDataCAPI.h */,
+				859B776E24D06870002452B6 /* VariantCAPI.h */,
+				859B776F24D06870002452B6 /* CameraManagerCAPI.h */,
+				859B777024D06870002452B6 /* StatusCAPI.h */,
+				859B777124D06870002452B6 /* DepthDataCAPI.h */,
+				859B777224D06870002452B6 /* RecordCAPI.h */,
+				859B777324D06870002452B6 /* IRImageCAPI.h */,
+				859B777424D06870002452B6 /* TriggerModeCAPI.h */,
+				859B777524D06870002452B6 /* DepthImageCAPI.h */,
+				859B777624D06870002452B6 /* CAPIVersion220.h */,
+				859B777724D06870002452B6 /* CAPIVersion31000.h */,
+				859B777824D06870002452B6 /* CAPIVersion320.h */,
+				859B777924D06870002452B6 /* CAPIVersion330.h */,
+				859B777A24D06870002452B6 /* ExposureModeCAPI.h */,
+				859B777B24D06870002452B6 /* CameraDeviceCAPI.h */,
+				859B777C24D06870002452B6 /* CAPIVersion300.h */,
+				859B777D24D06870002452B6 /* CAPIVersion.h */,
+				859B777E24D06870002452B6 /* SparsePointCloudCAPI.h */,
+				859B777F24D06870002452B6 /* CAPIMigration.h */,
+				859B778024D06870002452B6 /* DataStructuresCAPI.h */,
+				859B778124D06870002452B6 /* RawDataCAPI.h */,
+				859B778224D06870002452B6 /* EventCAPI.h */,
+				859B778324D06870002452B6 /* DefinitionsCAPI.h */,
+				859B778424D06870002452B6 /* ProcessingParametersCAPI.h */,
+				859B778524D06870002452B6 /* LensParametersCAPI.h */,
+				859B778624D06870002452B6 /* ExtendedDataCAPI.h */,
+			);
+			path = royaleCAPI;
+			sourceTree = "<group>";
+		};
+		859B778724D06A1E002452B6 /* driver */ = {
+			isa = PBXGroup;
+			children = (
+				859B778824D06A1E002452B6 /* RoyaleOpenNI2Driver.hpp */,
+				859B778924D06A1E002452B6 /* RoyaleOpenNI2DepthStream.hpp */,
+				859B778A24D06A1E002452B6 /* RoyaleOpenNI2Device.hpp */,
+			);
+			path = driver;
 			sourceTree = "<group>";
 		};
 		ADE4CA539878485F0A5D015F /* ni2 */ = {
@@ -827,6 +1038,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				859B76EE24D06334002452B6 /* ofxRoyaleDevice.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				40C55F69F602D3BE3D8C040C /* ofxNI2.cpp in Sources */,
@@ -955,6 +1167,11 @@
 					../../../addons/ofxNI2/libs/OpenNI2/lib/win64/OpenNI2/Drivers,
 					../../../addons/ofxNI2/src,
 					../../../addons/ofxNI2/src/utils,
+					../../../addons/ofxNI2/libs/Royale/include,
+					../../../addons/ofxNI2/libs/Royale/include/royale,
+					../../../addons/ofxNI2/libs/Royale/include/libuvc,
+					../../../addons/ofxNI2/libs/Royale,
+					../../../addons/ofxNI2/libs/Royale/include/driver,
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -1169,6 +1386,11 @@
 					../../../addons/ofxNI2/libs/OpenNI2/lib/win64/OpenNI2/Drivers,
 					../../../addons/ofxNI2/src,
 					../../../addons/ofxNI2/src/utils,
+					../../../addons/ofxNI2/libs/Royale/include,
+					../../../addons/ofxNI2/libs/Royale/include/royale,
+					../../../addons/ofxNI2/libs/Royale/include/libuvc,
+					../../../addons/ofxNI2/libs/Royale,
+					../../../addons/ofxNI2/libs/Royale/include/driver,
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -1243,6 +1465,11 @@
 					../../../addons/ofxNI2/libs/OpenNI2/lib/win64/OpenNI2/Drivers,
 					../../../addons/ofxNI2/src,
 					../../../addons/ofxNI2/src/utils,
+					../../../addons/ofxNI2/libs/Royale/include,
+					../../../addons/ofxNI2/libs/Royale/include/royale,
+					../../../addons/ofxNI2/libs/Royale/include/libuvc,
+					../../../addons/ofxNI2/libs/Royale,
+					../../../addons/ofxNI2/libs/Royale/include/driver,
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
