@@ -3,8 +3,12 @@
 #include "ofxNI2.h"
 
 ofxNI2::Device *device;
+#ifdef USE_IR
 ofxNI2::IrStream ir;
+#endif
+#ifdef USE_RGB
 ofxNI2::ColorStream color;
+#endif
 ofxNI2::DepthStream depth;
 
 //--------------------------------------------------------------
@@ -24,19 +28,23 @@ void testApp::setup()
 		depth.start();
 	}
 
+#ifdef USE_IR
 	if (ir.setup(*device)) // only for xtion device (OpenNI2-FreenectDriver issue)
 	{
 		ir.setSize(320, 240);
 		ir.setFps(30);
 		ir.start();
 	}
-	
-	//if (color.setup(*device)) // only for kinect 
-	//{
-	//	color.setSize(320, 240);
-	//	color.setFps(30);
-	//	color.start();
-	//}
+#endif
+    
+#ifdef USE_RGB
+	if (color.setup(*device)) // only for kinect
+	{
+		color.setSize(320, 240);
+		color.setFps(30);
+		color.start();
+	}
+#endif
 }
 
 void testApp::exit()
@@ -53,8 +61,14 @@ void testApp::update()
 //--------------------------------------------------------------
 void testApp::draw()
 {
+#ifdef USE_IR
 	ir.draw();
-	//color.draw(0,240);
+#endif
+    
+#ifdef USE_RGB
+	color.draw(0,240);
+#endif
+    
 	depth.draw(320, 0);
 }
 

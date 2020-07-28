@@ -25,16 +25,20 @@ namespace ofxNI2
 		inited = true;
 
         string path;
-#ifndef TARGET_WIN32
-        path = ofFilePath::getCurrentExeDir() + "/Drivers"; // osx / linux
-#else
-        path = ofFilePath::getCurrentExeDir() + "/OpenNI2/Drivers"; // windows
-#endif
+        path =  ofFilePath::join(ofFilePath::getCurrentExeDir(), "/OpenNI2/Drivers");
+        
+        cout<<"ofxNI2::init : driver path: "<<path<<endl;
         if (ofFile::doesFileExist(path, false))
         {
 #ifndef TARGET_WIN32
             setenv("OPENNI2_DRIVERS_PATH", path.c_str(), 1);
 #endif
+            ofDirectory dirDrivers(path);
+            vector<ofFile> drivers = dirDrivers.getFiles();
+            for(int i=0;i<drivers.size();i++){
+                cout<<"   "<<drivers[i].getFileName()<<endl;
+            }
+            
             assert_error(openni::OpenNI::initialize());
         }
         else
@@ -60,7 +64,6 @@ int Device::listDevices()
 	{
 		printf("[%d] %s [%s] (%s)\n", i, deviceList[i].getName(), deviceList[i].getVendor(), deviceList[i].getUri());
 	}
-	
 	return deviceList.getSize();
 }
 

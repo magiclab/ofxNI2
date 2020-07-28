@@ -1,8 +1,7 @@
-Setup
-========
+# Setup
 
-OSX
---------
+## OSX
+
 
 Add to Run Script
 
@@ -15,8 +14,15 @@ Uncomment
 
 in `ofxNI2.h` to use NiTE2.
 
-Visual Studio
---------
+### Drivers
+To switch to new OpenNI device drivers:
+
+* copy your drivers to `ofxNI2/libs/OpenNI2/lib/[your_platform]/Drivers`
+* relink the libraries that need relinking.
+
+See the Run Script of the example.
+
+## Visual Studio
 
 The project includes 64bit Windows libraries for OpenNI2 and NiTE2.
 After adding the addon to a project in the usual way:
@@ -25,3 +31,4 @@ After adding the addon to a project in the usual way:
 - drag NiTE2.lib and OpenNI2.lib into the Solution Explorer
 
 To use Microsoft Kinect through OpenNI2, install Microsoft SDK 1.x as well.
+
