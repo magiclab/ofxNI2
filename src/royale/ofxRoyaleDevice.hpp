@@ -12,13 +12,7 @@
 namespace ofxRoyale {
     class ofxRoyaleDevice{
     public:
-        ofxRoyaleDevice();
-        void setFromDepthStream();
-        bool isReady(){return bReady;}
-    private:
-        void reset();
-        
-        royale::openni2::RoyaleOpenNI2Device * rNi2Dev;
-        bool bReady;
+        static royale::String getCurrentUseCase(ofxNI2::Device * dev);
+        static bool setUseCase(ofxNI2::Device * dev, royale::openni2::RoyaleOpenNI2Device::RoyaleUseCase uc);
     };
 }

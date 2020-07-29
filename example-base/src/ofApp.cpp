@@ -14,7 +14,6 @@ openni::VideoStream depth;
 
 ofxNI2::Device *device;
 ofxNI2::DepthStream depth;
-ofxRoyale::ofxRoyaleDevice pmd;
 #endif
 
 #ifdef USE_IR
@@ -69,6 +68,7 @@ void ofApp::setup(){
     device = new ofxNI2::Device;
     if(device->listDevices()>0){
         device->setup();
+        ofxRoyale::ofxRoyaleDevice::setUseCase(device, royale::openni2::RoyaleOpenNI2Device::MODE_5_45FPS_500);
     }else{
         cout<<"No devices found: closing"<<endl;
         ofExit();
@@ -79,6 +79,7 @@ void ofApp::setup(){
     
     if (depth.setup(*device))
     {
+        
         depth.setSize(320, 240);
         depth.setFps(30);
         depth.start();
